@@ -88,7 +88,7 @@ def override():
 running = False
 registrar = None
 threader = None
-supported_methods = ['epoll','kqueue','poll','select','pyevent']
+supported_methods = ['epoll','poll','select','kqueue','pyevent']
 
 mapping = {
     'select': SelectRegistrar,
