@@ -21,8 +21,8 @@ subclass, as well as user-facing functions (such as `read()`, `write()`, `signal
 ### Examples
 One of the most common usage patterns consists of calling a function on an interval,
 stopping only once the function fails to return True. This is done with the `rel.timeout()`
-function - one simple example can be found in the [admin module](https://github.com/bubbleboy14/cantools/blob/master/cantools/util/admin.py) of the [util subsystem](https://github.com/bubbleboy14/cantools/tree/master/cantools/util)
-of the [cantools](https://github.com/bubbleboy14/cantools) web framework:
+function - one simple example can be found in the [admin module](https://github.com/Unity-Billal-mesloub/cantools/blob/main/cantools/util/admin.py) of the [util subsystem](https://github.com/Unity-Billal-mesloub/cantools/tree/main/cantools/util)
+of the [cantools](https://github.com/Unity-Billal-mesloub/cantools) web framework:
 
     class Creeper(object):
         def __init__(self):
@@ -77,10 +77,10 @@ call the `creep()` function every second; and 3) starts (via `dispatch()`) the
 microevent engine.
 
 The `creep()` function analyzes (via the `calc()` function) memory usage, and
-returns True, which tells rel to keep calling it. The cantools [cron](https://github.com/bubbleboy14/cantools/blob/master/cantools/web/dez_server/cron.py) module
+returns True, which tells rel to keep calling it. The cantools [cron](https://github.com/Unity-Billal-mesloub/cantools/blob/main/cantools/web/dez_server/cron.py) module
 essentially functions the same way.
 
-The cantools [util module](https://github.com/bubbleboy14/cantools/blob/master/cantools/util/__init__.py) also has a good example of adjusting engine rates:
+The cantools [util module](https://github.com/Unity-Billal-mesloub/blob/main/cantools/util/__init__.py) also has a good example of adjusting engine rates:
 
     def init_rel():
         import rel
@@ -91,7 +91,7 @@ The cantools [util module](https://github.com/bubbleboy14/cantools/blob/master/c
             rel.set_turbo(config.rel.turbo)
 
 Here, `set_sleep()` and `set_turbo()` are used to adjust the SLEEP_SEC and SLEEP_TURBO
-values, the defaults of which may be found in the rel [registrar](https://github.com/bubbleboy14/registeredeventlistener/blob/master/rel/registrar.py) module:
+values, the defaults of which may be found in the rel [registrar](https://github.com/Unity-Billal-mesloub/registeredeventlistener/blob/main/rel/registrar.py) module:
 
     SLEEP_SEC = .03
     SLEEP_TURBO = 0.0001
@@ -99,10 +99,10 @@ values, the defaults of which may be found in the rel [registrar](https://github
 SLEEP_TURBO is used whenever the engine is managing active write events.
 
 More usage examples can be found throughout a rel-based asynchronous network library
-called [dez](https://github.com/bubbleboy14/dez). Note that since dez originally
+called [dez](https://github.com/Unity-Billal-mesloub/dez). Note that since dez originally
 used pyevent, the rel functions are referenced throughout dez under the event
 module, e.g. `event.dispatch()` instead of `rel.dispatch()`. This all works out due
-to the dez [init file](https://github.com/bubbleboy14/dez/blob/master/dez/__init__.py) calling `rel.override()`:
+to the dez [init file](https://github.com/Unity-Billal-mesloub/dez/blob/main/dez/__init__.py) calling `rel.override()`:
 
     import rel
     rel.override()
@@ -113,7 +113,7 @@ without the need to change anything else. However, if this isn't your use case
 rel directly.
 
 Anyway, dez is full of rel example code. One concise example is the SocketDaemon
-in the [server submodule](https://github.com/bubbleboy14/dez/blob/master/dez/network/server.py) of [dez.network](https://github.com/bubbleboy14/dez/tree/master/dez/network):
+in the [server submodule](https://github.com/Unity-Billal-mesloub/dez/blob/main/dez/network/server.py) of [dez.network](https://github.com/Unity-Billal-mesloub/dez/tree/main/dez/network):
 
     class SocketDaemon(object):
         def __init__(self, hostname, port, cb=None, b64=False, cbargs=[], certfile=None, keyfile=None, cacerts=None):
@@ -151,7 +151,7 @@ in the [server submodule](https://github.com/bubbleboy14/dez/blob/master/dez/net
             event.signal(2, event.abort)
             event.dispatch()
 
-Another short example, also in [dez.network](https://github.com/bubbleboy14/dez/tree/master/dez/network), is to be found in the [controller submodule](https://github.com/bubbleboy14/dez/blob/master/dez/network/controller.py):
+Another short example, also in [dez.network](https://github.com/Unity-Billal-mesloub/dez/tree/main/dez/network), is to be found in the [controller submodule](https://github.com/Unity-Billal-mesloub/dez/blob/main/dez/network/controller.py):
 
     class SocketController(object):
         def __init__(self):
@@ -181,7 +181,7 @@ Another short example, also in [dez.network](https://github.com/bubbleboy14/dez/
             event.signal(2, self._abort)
             event.dispatch()
 
-Other brief examples are sprinkled throughout [dez.http](https://github.com/bubbleboy14/dez/tree/master/dez/http), including in [HTTPApplication](https://github.com/bubbleboy14/dez/blob/master/dez/http/application.py), [Shield](https://github.com/bubbleboy14/dez/blob/master/dez/http/server/shield.py), [fetch](https://github.com/bubbleboy14/dez/blob/master/dez/http/fetch.py), [inotify](https://github.com/bubbleboy14/dez/blob/master/dez/http/inotify.py), and elsewhere.
+Other brief examples are sprinkled throughout [dez.http](https://github.com/Unity-Billal-mesloub/dez/tree/main/dez/http), including in [HTTPApplication](https://github.com/Unity-Billal-mesloub/dez/blob/main/dez/http/application.py), [Shield](https://github.com/Unity-Billal-mesloub/dez/blob/main/dez/http/server/shield.py), [fetch](https://github.com/Unity-Billal-mesloub/dez/blob/main/dez/http/fetch.py), [inotify](https://github.com/Unity-Billal-mesloub/dez/blob/main/dez/http/inotify.py), and elsewhere.
 
 
 ## test.py
@@ -225,7 +225,7 @@ listeners, and notes that the event has transpired.
 ## rel.py
 
 R.E.L.
-Registed Event Listener is a pure-python implementation of [pyevent](https://github.com/jaraco/pyevent),
+Registed Event Listener is a pure-python implementation of [pyevent](https://github.com/Unity-Billal-mesloub/pyevent),
 which is a wrapper around [libevent](http://monkey.org/~provos/libevent/), providing an identical interface
 without the need to compile C code, and without breaking the GIL / threading.
 
@@ -312,7 +312,7 @@ a couple Registrar functions:
     def timeout(self,delay,cb,*args):
         return Timer(self,delay,cb,*args)
 
-The Registrar API is taken from [pyevent](https://github.com/jaraco/pyevent),
+The Registrar API is taken from [pyevent](https://github.com/Unity-Billal-mesloub/pyevent),
 which is a wrapper around [libevent](http://monkey.org/~provos/libevent/).
 
 Note that while rel can be configured to use pyevent under the hood
